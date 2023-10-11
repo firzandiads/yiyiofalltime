@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/halo', function () {
+    return 'Halo dunia';
+});
+
 Route::get('/user', [UserController::class, 'index'])->middleware('auth')->name('user');
+Route::get('/user/tambah', [UserController::class, 'tambah'])->middleware('auth')->name('user.tambah');
+
+Route::get('/tentang', function () {
+    return view('about');
+})->name('about');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
